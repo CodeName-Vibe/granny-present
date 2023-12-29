@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: grey;
+}
+body * {
+  display: flex;
+  user-select: none;
+  font-family: 'Comfortaa', sans-serif;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+.col {
+  flex-direction: column;
+}
+.center {
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  font-size: 48px;
+}
+h2 {
+  font-size: 28px;
+}
+app-root {
+  margin-top: 5%;
+  justify-content: center;
+}

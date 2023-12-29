@@ -1,0 +1,19 @@
+.day {
+  width: 80px;
+  height: 80px;
+  margin: 15px;
+  background-color: red;
+  cursor: pointer;
+}
+.day:hover {
+  transform: scale(150%);
+}
+.day:hover h2 {
+  transform: scale(75%);
+}
+.days {
+  flex-wrap: wrap;
+}
+.container {
+  width: 800px;
+}
