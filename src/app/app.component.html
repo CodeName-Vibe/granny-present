@@ -1,11 +1,248 @@
-<div class="col container center">
-  <h1>{{ year[date-1] }}</h1>
-  <div class="days">
-    <div *ngFor="let day of days; index as i" class="day center">
-      <h2>{{ i+1 }}</h2>
+<div class="bg bg-jan"
+[ngClass]="{
+  'translate-y-[-100%]': !year[0].status
+}"></div>
+<div class="bg bg-feb"
+[ngClass]="{
+  'translate-y-[-100%]': year[2].status || year[3].status || year[4].status || year[5].status || year[6].status || year[7].status || year[8].status || year[9].status || year[10].status || year[11].status,
+  'translate-y-[100%]': year[0].status
+}"></div>
+<div class="bg bg-mar"
+[ngClass]="{
+  'translate-y-[-100%]': year[3].status || year[4].status || year[5].status || year[6].status || year[7].status || year[8].status || year[9].status || year[10].status || year[11].status,
+  'translate-y-[100%]': year[0].status || year[1].status
+}"></div>
+<div class="bg bg-apr"
+[ngClass]="{
+  'translate-y-[-100%]': year[4].status || year[5].status || year[6].status || year[7].status || year[8].status || year[9].status || year[10].status || year[11].status,
+  'translate-y-[100%]': year[0].status || year[1].status || year[2].status
+}"></div>
+<div class="bg bg-may"
+[ngClass]="{
+  'translate-y-[-100%]': year[5].status || year[6].status || year[7].status || year[8].status || year[9].status || year[10].status || year[11].status,
+  'translate-y-[100%]': year[0].status || year[1].status || year[2].status || year[3].status
+}"></div>
+<div class="bg bg-jun"
+[ngClass]="{
+  'translate-y-[-100%]': year[6].status || year[7].status || year[8].status || year[9].status || year[10].status || year[11].status,
+  'translate-y-[100%]': year[0].status || year[1].status || year[2].status || year[3].status|| year[4].status
+}"></div>
+<div class="bg bg-jul"
+[ngClass]="{
+  'translate-y-[-100%]': year[7].status || year[8].status || year[9].status || year[10].status || year[11].status,
+  'translate-y-[100%]': year[0].status || year[1].status || year[2].status || year[3].status || year[4].status|| year[5].status
+}"></div>
+<div class="bg bg-aug"
+[ngClass]="{
+  'translate-y-[-100%]': year[8].status || year[9].status || year[10].status || year[11].status,
+  'translate-y-[100%]': year[0].status || year[1].status || year[2].status || year[3].status || year[4].status|| year[5].status || year[6].status
+}"></div>
+<div class="bg bg-sep"
+[ngClass]="{
+  'translate-y-[-100%]': year[9].status || year[10].status || year[11].status,
+  'translate-y-[100%]': year[0].status || year[1].status || year[2].status || year[3].status || year[4].status|| year[5].status || year[6].status || year[7].status
+}"></div>
+<div class="bg bg-oct"
+[ngClass]="{
+  'translate-y-[-100%]': year[10].status || year[11].status,
+  'translate-y-[100%]': year[0].status || year[1].status || year[2].status || year[3].status || year[4].status|| year[5].status || year[6].status || year[7].status || year[8].status
+}"></div>
+<div class="bg bg-nov"
+[ngClass]="{
+  'translate-y-[-100%]': year[11].status,
+  'translate-y-[100%]': year[0].status || year[1].status || year[2].status || year[3].status || year[4].status|| year[5].status || year[6].status || year[7].status || year[8].status || year[9].status
+}"></div>
+<div class="bg bg-dec"
+[ngClass]="{
+  'translate-y-[100%]': !year[11].status
+}"></div>
+<div class="bg-[rgba(51,73,68,0.8)] h-[100vh] px-[20px] items-center flex-col">
+  <h1>{{ year[monthNum].name }}</h1>
+  <div class="row">
+    <div class="flex-col w-[700px]">
+      <div class="w-[100%] justify-center mb-[15px]">
+        <div class="text-[#FFFFFF] text-[20px] mx-[15px] py-[10px] px-[20px] rounded-[6px] bg-[#313131]">ПН</div>
+        <div class="text-[#FFFFFF] text-[20px] mx-[15px] py-[10px] px-[20px] rounded-[6px] bg-[#313131]">ВТ</div>
+        <div class="text-[#FFFFFF] text-[20px] mx-[15px] py-[10px] px-[20px] rounded-[6px] bg-[#313131]">СР</div>
+        <div class="text-[#FFFFFF] text-[20px] mx-[15px] py-[10px] px-[20px] rounded-[6px] bg-[#313131]">ЧТ</div>
+        <div class="text-[#FFFFFF] text-[20px] mx-[15px] py-[10px] px-[20px] rounded-[6px] bg-[#313131]">ПТ</div>
+        <div class="text-[#FFFFFF] text-[20px] mx-[15px] py-[10px] px-[20px] rounded-[6px] bg-[#313131]">СБ</div>
+        <div class="text-[#FFFFFF] text-[20px] mx-[15px] py-[10px] px-[20px] rounded-[6px] bg-[#313131]">НД</div>
+      </div>
+      <div #month class="flex-wrap relative overflow-hidden bg-[rgba(0,0,0,0.5)] rounded-[6px]"
+      [ngClass]="{
+        'h-[600px]': year[8].status || year[11].status,
+        'h-[500px]': !year[8].status && !year[11].status,
+      }">
+
+        <div (click)="todayClicked()" class="day absolute w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(43,70,156)] border-[4px] border-[#FFFFFF]"
+        [style.left.px]="getTodayX()"
+        [style.top.px]="getTodayY()"
+        [ngClass]="{
+          'bg-[rgb(43,70,156)]': year[0].status,
+          'bg-[rgb(130,49,161)]': year[1].status,
+          'bg-[rgb(46,122,39)]': year[2].status,
+          'bg-[rgb(165,163,43)]': year[3].status,
+          'bg-[rgb(150,98,50)]': year[4].status,
+          'bg-[rgb(57,165,142)]': year[5].status,
+          'bg-[rgb(136,49,89)]': year[6].status,
+          'bg-[rgb(117,35,35)]': year[7].status,
+          'bg-[rgb(61,124,139)]': year[8].status,
+          'bg-[rgb(75,65,65)]': year[9].status,
+          'bg-[rgb(104,126,45)]': year[10].status,
+          'bg-[rgb(78,66,128)]': year[11].status
+        }">
+          <h2>{{ dayNum }}</h2>
+        </div>
+
+        <div (click)="animationClosing()" class="absolute z-[8] w-[100%] h-[100%]"
+        [style.left.px]="getXValue()"
+        [style.top.px]="getYValue()"
+        [ngClass]="{
+          'pointer-events-none': !animBoard.animated,
+          'pointer-events-auto': animBoard.animated,
+          'duration-0': !animBoard.duration,
+          'duration-[400ms]': animBoard.duration
+        }">
+          <div [ngClass]="{
+            'w-[75px]': !animBoard.animated,
+            'h-[75px]': !animBoard.animated,
+            'rounded-[100%]': !animBoard.animated,
+            'm-[12.5px]': !animBoard.animated,
+            'opacity-0': !animBoard.animated,
+            
+            'w-[100%]': animBoard.animated,
+            'h-[100%]': animBoard.animated,
+            'rounded-0': animBoard.animated,
+            'm-0': animBoard.animated,
+            'opacity-1': animBoard.animated,
+            
+            'bg-[rgb(43,70,156)]': year[0].status,
+            'bg-[rgb(130,49,161)]': year[1].status,
+            'bg-[rgb(46,122,39)]': year[2].status,
+            'bg-[rgb(165,163,43)]': year[3].status,
+            'bg-[rgb(150,98,50)]': year[4].status,
+            'bg-[rgb(57,165,142)]': year[5].status,
+            'bg-[rgb(136,49,89)]': year[6].status,
+            'bg-[rgb(117,35,35)]': year[7].status,
+            'bg-[rgb(61,124,139)]': year[8].status,
+            'bg-[rgb(75,65,65)]': year[9].status,
+            'bg-[rgb(104,126,45)]': year[10].status,
+            'bg-[rgb(78,66,128)]': year[11].status
+          }">
+            <div class="justify-center items-center flex-col w-[100%] text-center">
+              <h4 *ngIf="animBoard.dayText">{{ animBoard.dateText }}</h4>
+              <h3 *ngIf="animBoard.dayText">{{ animBoard.holiday }}</h3>
+            </div>
+          </div>
+        </div>
+        
+        <div *ngFor="let day of months[0]; index as i" (click)="dayClicked(i,0)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(43,70,156)]"
+        [ngClass]="{
+          'pointer-events-none': !year[0].status,
+          'brightness-[0.7]': !year[0].status,
+          'opacity-[0.7]': !year[0].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[1]; index as i" (click)="dayClicked(i,1)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(130,49,161)]"
+        [ngClass]="{
+          'pointer-events-none': !year[1].status,
+          'brightness-[0.7]': !year[1].status,
+          'opacity-[0.7]': !year[1].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[2]; index as i" (click)="dayClicked(i,2)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(46,122,39)]"
+        [ngClass]="{
+          'pointer-events-none': !year[2].status,
+          'brightness-[0.7]': !year[2].status,
+          'opacity-[0.7]': !year[2].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[3]; index as i" (click)="dayClicked(i,3)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(165,163,43)]"
+        [ngClass]="{
+          'pointer-events-none': !year[3].status,
+          'brightness-[0.7]': !year[3].status,
+          'opacity-[0.7]': !year[3].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[4]; index as i" (click)="dayClicked(i,4)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(150,98,50)]"
+        [ngClass]="{
+          'pointer-events-none': !year[4].status,
+          'brightness-[0.7]': !year[4].status,
+          'opacity-[0.7]': !year[4].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[5]; index as i" (click)="dayClicked(i,5)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(57,165,142)]"
+        [ngClass]="{
+          'pointer-events-none': !year[5].status,
+          'brightness-[0.7]': !year[5].status,
+          'opacity-[0.7]': !year[5].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[6]; index as i" (click)="dayClicked(i,6)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(136,49,89)]"
+        [ngClass]="{
+          'pointer-events-none': !year[6].status,
+          'brightness-[0.7]': !year[6].status,
+          'opacity-[0.7]': !year[6].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[7]; index as i" (click)="dayClicked(i,7)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(117,35,35)]"
+        [ngClass]="{
+          'pointer-events-none': !year[7].status,
+          'brightness-[0.7]': !year[7].status,
+          'opacity-[0.7]': !year[7].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[8]; index as i" (click)="dayClicked(i,8)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(61,124,139)]"
+        [ngClass]="{
+          'pointer-events-none': !year[8].status,
+          'brightness-[0.7]': !year[8].status,
+          'opacity-[0.7]': !year[8].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[9]; index as i" (click)="dayClicked(i,9)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(75,65,65)]"
+        [ngClass]="{
+          'pointer-events-none': !year[9].status,
+          'brightness-[0.7]': !year[9].status,
+          'opacity-[0.7]': !year[9].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[10]; index as i" (click)="dayClicked(i,10)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(104,126,45)]"
+        [ngClass]="{
+          'pointer-events-none': !year[10].status,
+          'brightness-[0.7]': !year[10].status,
+          'opacity-[0.7]': !year[10].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+        <div *ngFor="let day of months[11]; index as i" (click)="dayClicked(i,11)" class="day w-[75px] h-[75px] m-[12.5px] cursor-pointer rounded-[6px] hover:scale-[135%] justify-center items-center bg-[rgb(78,66,128)]"
+        [ngClass]="{
+          'pointer-events-none': !year[11].status,
+          'brightness-[0.7]': !year[11].status,
+          'opacity-[0.7]': !year[11].status
+        }">
+          <h2>{{ i+1 }}</h2>
+        </div>
+      </div>
     </div>
-    <!-- <div *ngFor="let day of days; index as i" class="day center">
-      <h2>{{ i+1 }}</h2>
-    </div> -->
+
+    <div class="justify-center flex-col">
+      <div (click)="arrowUpClicked()" class="arrow w-[100px] h-[100px] m-[20px] mr-[0] cursor-pointer bg-[#6ee0ba] justify-center items-center border-[3px] border-[#313131] rounded-[6px] hover:bg-[#FFFFFF]">
+        <div class="arrow-icon-up"></div>
+      </div>
+      <div (click)="arrowDownClicked()" class="arrow w-[100px] h-[100px] m-[20px] mr-[0] cursor-pointer bg-[#6ee0ba] justify-center items-center border-[3px] border-[#313131] rounded-[6px] hover:bg-[#FFFFFF]">
+        <div class="arrow-icon-down"></div>
+      </div>
+    </div>
   </div>
 </div>

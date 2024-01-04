@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  background-color: grey;
+  margin: 0;
 }
 body * {
   display: flex;
@@ -8,20 +12,96 @@ body * {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
   transition-duration: 400ms;
 }
-.col {
-  flex-direction: column;
-}
-.center {
-  justify-content: center;
-  align-items: center;
-}
+
 h1 {
   font-size: 48px;
+  font-weight: 600;
+  padding: 18px;
+  margin: 15px;
+  background-color: #313131;
+  border-radius: 6px;
+  color: white;
 }
 h2 {
   font-size: 28px;
+  color: white;
 }
-app-root {
-  margin-top: 5%;
+h3 {
+  font-size: 33px;
+  font-weight: 600;
+  color: white;
+}
+h4 {
+  font-size: 28px;
+  color: white;
+}
+
+.bg {
+  position: fixed;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
   justify-content: center;
+  align-items: flex-start;
+  background-size: cover;
+  filter: blur(6px);
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 400ms;
+}
+.bg-jan {
+  background-image: url("/assets/bg-images/jan.svg");
+}
+.bg-feb {
+  background-image: url("/assets/bg-images/feb.svg");
+}
+.bg-mar {
+  background-image: url("/assets/bg-images/mar.svg");
+}
+.bg-apr {
+  background-image: url("/assets/bg-images/apr.svg");
+}
+.bg-may {
+  background-image: url("/assets/bg-images/may.svg");
+}
+.bg-jun {
+  background-image: url("/assets/bg-images/jun.svg");
+}
+.bg-jul {
+  background-image: url("/assets/bg-images/jul.svg");
+}
+.bg-aug {
+  background-image: url("/assets/bg-images/aug.svg");
+}
+.bg-sep {
+  background-image: url("/assets/bg-images/sep.svg");
+}
+.bg-oct {
+  background-image: url("/assets/bg-images/oct.svg");
+}
+.bg-nov {
+  background-image: url("/assets/bg-images/nov.svg");
+}
+.bg-dec {
+  background-image: url("/assets/bg-images/dec.svg");
+}
+
+[class*="arrow-icon"] {
+  width: 50px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: invert(15%);
+}
+.arrow-icon-up {
+  background-image: url("/assets/ArrowUp.svg");
+}
+.arrow-icon-down {
+  background-image: url("/assets/ArrowDown.svg");
+}
+
+.arrow:hover [class*="arrow-icon"] {
+  transform: scale(120%);
+}
+.day:hover h2 {
+  transform: scale(77.5%);
 }
